@@ -28,12 +28,22 @@ class ElectricBackground {
             });
         }
 
-        // Create periodic lightning
+        // Create periodic lightning (еще больше молний)
+        const isMobile = window.innerWidth < 768;
+        const lightningChance = isMobile ? 0.8 : 0.5;
+        const lightningInterval = isMobile ? 800 : 1500;
+
+        // Создаем начальные молнии сразу при старте
+        const initialLightnings = isMobile ? 4 : 3;
+        for (let i = 0; i < initialLightnings; i++) {
+            setTimeout(() => this.createLightning(), i * 300);
+        }
+
         setInterval(() => {
-            if (Math.random() < 0.3) {
+            if (Math.random() < lightningChance) {
                 this.createLightning();
             }
-        }, 2000);
+        }, lightningInterval);
     }
 
     createLightning() {
@@ -112,23 +122,49 @@ class ElectricBackground {
             });
         });
 
-        // Draw lightnings
+        // Draw lightnings (трехслойные - желтое свечение + желтая линия + белый центр)
+        const isMobile = window.innerWidth < 768;
+        const outerWidth = isMobile ? 6 : 4;
+        const middleWidth = isMobile ? 4 : 2.5;
+        const innerWidth = isMobile ? 2 : 1.5;
+        const shadowBlur = isMobile ? 25 : 15;
+
         this.lightnings.forEach(lightning => {
+            // Внешний слой - яркое желтое свечение
             this.ctx.beginPath();
             this.ctx.moveTo(lightning.points[0].x, lightning.points[0].y);
-
             for (let i = 1; i < lightning.points.length; i++) {
                 this.ctx.lineTo(lightning.points[i].x, lightning.points[i].y);
             }
-
-            this.ctx.strokeStyle = `rgba(252, 218, 0, ${lightning.opacity})`;
-            this.ctx.lineWidth = 2;
-            this.ctx.stroke();
-
-            // Glow effect
-            this.ctx.shadowBlur = 10;
+            this.ctx.strokeStyle = `rgba(252, 218, 0, ${lightning.opacity * 0.6})`;
+            this.ctx.lineWidth = outerWidth;
+            this.ctx.shadowBlur = shadowBlur;
             this.ctx.shadowColor = '#fcda00';
             this.ctx.stroke();
+
+            // Средний слой - насыщенный желтый
+            this.ctx.beginPath();
+            this.ctx.moveTo(lightning.points[0].x, lightning.points[0].y);
+            for (let i = 1; i < lightning.points.length; i++) {
+                this.ctx.lineTo(lightning.points[i].x, lightning.points[i].y);
+            }
+            this.ctx.strokeStyle = `rgba(252, 218, 0, ${lightning.opacity})`;
+            this.ctx.lineWidth = middleWidth;
+            this.ctx.shadowBlur = shadowBlur / 2;
+            this.ctx.stroke();
+
+            // Внутренний слой - яркий белый центр
+            this.ctx.beginPath();
+            this.ctx.moveTo(lightning.points[0].x, lightning.points[0].y);
+            for (let i = 1; i < lightning.points.length; i++) {
+                this.ctx.lineTo(lightning.points[i].x, lightning.points[i].y);
+            }
+            this.ctx.strokeStyle = `rgba(255, 255, 255, ${lightning.opacity * 0.9})`;
+            this.ctx.lineWidth = innerWidth;
+            this.ctx.shadowBlur = shadowBlur / 3;
+            this.ctx.shadowColor = '#ffffff';
+            this.ctx.stroke();
+
             this.ctx.shadowBlur = 0;
         });
     }
@@ -358,11 +394,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const electric = new ElectricBackground(canvas);
     electric.animate();
 
-    // Header scroll effect (создаем первым)
-    const headerScroll = new HeaderScroll();
-
-    // Theme switcher (передаем headerScroll)
-    new ThemeSwitcher(headerScroll);
+    // Header scroll effect
+    new HeaderScroll();
 
     // Scroll animations
     new ScrollAnimations();
@@ -388,11 +421,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===== Performance Optimization =====
-// Reduce canvas animation on mobile
+// Adjust canvas visibility on mobile (увеличена видимость молний)
 if (window.innerWidth < 768) {
     const canvas = document.getElementById('electricCanvas');
     if (canvas) {
-        canvas.style.opacity = '0.05';
+        canvas.style.opacity = '0.3';
     }
 }
 
