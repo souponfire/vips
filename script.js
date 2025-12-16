@@ -378,9 +378,11 @@ class HeaderScroll {
         const isLightTheme = document.body.classList.contains('light-theme');
 
         if (window.pageYOffset > 100) {
-            this.header.style.padding = '0.5rem 0';
+            document.body.classList.add('scrolled');
+            this.header.style.padding = '1.5rem 0';
             this.header.style.background = isLightTheme ? 'rgba(255, 255, 255, 0.95)' : 'rgba(10, 10, 10, 0.95)';
         } else {
+            document.body.classList.remove('scrolled');
             this.header.style.padding = '1rem 0';
             this.header.style.background = isLightTheme ? 'rgba(255, 255, 255, 0.9)' : 'rgba(10, 10, 10, 0.9)';
         }

@@ -81,10 +81,16 @@ body.light-theme .nav a {
 .logo {
     display: flex;
     align-items: center;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 20px;
-    z-index: 100;
+    z-index: 99;
+    transition: opacity 0.3s ease;
+}
+
+body.scrolled .logo {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .logo-text {
@@ -109,7 +115,9 @@ body.light-theme .nav a {
 .nav {
     display: flex;
     gap: 2rem;
-    margin-right: -100px;
+    position: absolute;
+    right: 20px;
+    top: 1.5rem;
 }
 
 .nav a {
@@ -330,6 +338,14 @@ body.light-theme .nav a {
 /* Скрываем мобильный индикатор на десктопе */
 .power-indicator-mobile {
     display: none;
+}
+
+/* Скрываем индикаторы при скролле */
+body.scrolled .hero-visual,
+body.scrolled .power-indicator-mobile {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
 }
 
 .indicator-circle {
