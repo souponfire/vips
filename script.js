@@ -52,11 +52,33 @@ class ElectricBackground {
         const endX = startX + (Math.random() - 0.5) * 300;
         const endY = Math.random() * this.canvas.height;
 
+        // Основная молния
         this.lightnings.push({
             points: this.generateLightningPoints(startX, startY, endX, endY),
             opacity: 1,
             decay: 0.05
         });
+
+        // Случайно добавляем дополнительные молнии (двойные/тройные)
+        const extraBolts = Math.random();
+
+        if (extraBolts > 0.4) { // 60% шанс второй молнии
+            const offset = (Math.random() - 0.5) * 100;
+            this.lightnings.push({
+                points: this.generateLightningPoints(startX + offset, startY, endX + offset, endY),
+                opacity: 0.8,
+                decay: 0.05
+            });
+        }
+
+        if (extraBolts > 0.7) { // 30% шанс третьей молнии
+            const offset = (Math.random() - 0.5) * 150;
+            this.lightnings.push({
+                points: this.generateLightningPoints(startX + offset, startY, endX + offset, endY),
+                opacity: 0.6,
+                decay: 0.05
+            });
+        }
     }
 
     generateLightningPoints(x1, y1, x2, y2) {

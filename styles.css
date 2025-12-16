@@ -6,7 +6,7 @@
 }
 
 :root {
-    --primary-color: #fcda00;
+    --primary-color: #ffc00c;
     --bg-dark: #0a0a0a;
     --bg-card: #1a1a1a;
     --text-primary: #ffffff;
@@ -190,6 +190,7 @@ body.scrolled .logo {
     display: flex;
     align-items: center;
     padding-top: 80px;
+    z-index: 5;
 }
 
 .hero .container {
@@ -268,6 +269,11 @@ body.scrolled .logo {
     margin-bottom: 2rem;
 }
 
+.hero-content {
+    position: relative;
+    z-index: 20;
+}
+
 .hero-buttons {
     display: flex;
     gap: 1rem;
@@ -286,6 +292,7 @@ body.scrolled .logo {
     border-radius: 8px;
     transition: var(--transition);
     position: relative;
+    z-index: 50;
     overflow: hidden;
 }
 
@@ -699,6 +706,22 @@ body.scrolled .power-indicator-mobile {
 .delivery-truck {
     font-size: 4rem;
     filter: drop-shadow(0 0 10px rgba(252, 218, 0, 0.5));
+    animation: truck-shake 0.2s ease-in-out infinite;
+}
+
+@keyframes truck-shake {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(0.5px, -0.5px) rotate(0.2deg);
+    }
+    50% {
+        transform: translate(-0.5px, 0.5px) rotate(-0.2deg);
+    }
+    75% {
+        transform: translate(0.5px, 0.5px) rotate(0.1deg);
+    }
 }
 
 .delivery-cargo {
@@ -731,7 +754,7 @@ body.scrolled .power-indicator-mobile {
 /* ===== Process Steps ===== */
 .process-steps {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
@@ -740,8 +763,8 @@ body.scrolled .power-indicator-mobile {
 }
 
 .step {
-    flex: 1;
-    min-width: 200px;
+    flex: 0 0 200px;
+    width: 200px;
     text-align: center;
 }
 
@@ -783,18 +806,43 @@ body.scrolled .power-indicator-mobile {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 40px;
+    box-shadow: 0 0 10px var(--primary-color);
 }
 
-.connector-bolt {
+.connector-line {
+    width: 100%;
+    height: 100%;
+    background: var(--primary-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.connector-line::after {
+    content: '';
     position: absolute;
-    font-size: 1.5rem;
+    width: 20px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
     animation: slide 2s infinite;
 }
 
+.connector-bolt {
+    display: none;
+}
+
 @keyframes slide {
-    0%, 100% { transform: translateX(-30px); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateX(30px); }
+    0% {
+        left: -20px;
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
 }
 
 /* ===== Contact Section ===== */
@@ -811,12 +859,26 @@ body.scrolled .power-indicator-mobile {
     padding: 2rem;
     text-align: center;
     transition: var(--transition);
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
 
 .contact-card:hover {
     border-color: var(--primary-color);
     transform: translateY(-5px);
     box-shadow: var(--shadow-glow);
+}
+
+.contact-card-static {
+    cursor: default;
+}
+
+.contact-card-static:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: rgba(252, 218, 0, 0.3);
 }
 
 .contact-icon {
@@ -834,10 +896,8 @@ body.scrolled .power-indicator-mobile {
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition);
-}
-
-.contact-link:hover {
-    color: var(--primary-color);
+    display: inline-block;
+    pointer-events: none;
 }
 
 .contact-text {
@@ -979,7 +1039,8 @@ body.scrolled .power-indicator-mobile {
 
     .hero {
         min-height: auto;
-        padding: 160px 0 60px;
+        padding: 200px 0 80px;
+        margin-bottom: 0;
     }
 
     .hero .container {
@@ -998,6 +1059,16 @@ body.scrolled .power-indicator-mobile {
 
     .hero-buttons {
         justify-content: center;
+        position: relative;
+        z-index: 999;
+        pointer-events: auto;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    .hero-buttons .btn {
+        z-index: 1000;
+        pointer-events: auto;
     }
 
     .btn {
@@ -1005,24 +1076,6 @@ body.scrolled .power-indicator-mobile {
         font-size: 0.9rem;
     }
 
-    .hero-visual {
-        order: -1;
-    }
-
-    .power-indicator {
-        width: 120px;
-        height: 120px;
-    }
-
-    .indicator-circle,
-    .indicator-pulse {
-        width: 80px;
-        height: 80px;
-    }
-
-    .indicator-text {
-        font-size: 1rem;
-    }
 
     .generators,
     .process,
@@ -1088,16 +1141,33 @@ body.scrolled .power-indicator-mobile {
         width: 3px;
         height: 40px;
         flex-direction: column;
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    .connector-bolt {
+    .connector-line::after {
+        width: 100%;
+        height: 20px;
         animation: slide-vertical 2s infinite;
     }
 
     @keyframes slide-vertical {
-        0%, 100% { transform: translateY(-20px); opacity: 0; }
-        50% { opacity: 1; }
-        100% { transform: translateY(20px); }
+        0% {
+            top: -20px;
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            top: 100%;
+            opacity: 0;
+        }
+    }
+
+    .connector-bolt {
+        display: none;
     }
 
     .contact-grid {
