@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerGo - Аренда генераторов в Алматы</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Electric Background Canvas -->
+    <canvas id="electricCanvas"></canvas>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <svg class="logo-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/>
+                </svg>
+                <span class="logo-text">Power<span class="logo-accent">Go</span></span>
+            </div>
+            <nav class="nav">
+                <a href="#generators">Генераторы</a>
+                <a href="#process">Как работаем</a>
+                <a href="#contact">Контакты</a>
+            </nav>
+            <div class="theme-switch" id="themeSwitch">
+                <div class="switch-track">
+                    <div class="switch-thumb"></div>
+                    <div class="switch-spark"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="glitch" data-text="Энергия для вашего бизнеса">
+                    Энергия для вашего бизнеса
+                </h1>
+                <p class="hero-subtitle">
+                    Дизельные и бензиновые генераторы любой мощности<br>
+                    для стройплощадок, мероприятий и резервного питания в Алматы
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/77076782151" class="btn btn-primary">
+                        <span class="btn-icon">💬</span>
+                        Заказать в WhatsApp
+                    </a>
+                    <a href="tel:+77076782151" class="btn btn-secondary">
+                        <span class="btn-icon">📞</span>
+                        +7 707 678 21 51
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="power-indicator">
+                    <div class="indicator-circle"></div>
+                    <div class="indicator-pulse"></div>
+                    <span class="indicator-text">ONLINE</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Generators Section -->
+    <section id="generators" class="generators">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-bolt">⚡</span>
+                Наши генераторы
+            </h2>
+
+            <div class="generators-grid">
+                <!-- Generator 1 -->
+                <div class="generator-card">
+                    <div class="card-image" style="background-image: url('huko82xa0x0p3mo918af.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-glow"></div>
+                    <div class="card-header">
+                        <h3>Yuchai 125 kVA</h3>
+                        <div class="card-specs">
+                            <div class="power-badge">92 kW</div>
+                            <div class="spec-item">
+                                <span class="spec-icon">🔌</span>
+                                <span>220/380V</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-icon">🔊</span>
+                                <span>65-75 дБ</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-icon">📏</span>
+                                <span>1.5м</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-price">
+                        <div class="price-amount">от 25,000 ₸</div>
+                        <div class="price-period">в сутки</div>
+                        <div class="card-note">
+                            * Доставка и топливо рассчитывается отдельно
+                        </div>
+                    </div>
+                    <a href="https://wa.me/77076782151?text=Хочу арендовать Yuchai 125 kVA" class="btn btn-card">
+                        ⚡ Арендовать сейчас ⚡
+                    </a>
+                </div>
+
+                <!-- Generator 2 -->
+                <div class="generator-card">
+                    <div class="card-image" style="background-image: url('MG_6026.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-glow"></div>
+                    <div class="card-header">
+                        <h3>Isuzu 55 kVA</h3>
+                        <div class="card-specs">
+                            <div class="power-badge">55 kVA</div>
+                            <div class="spec-item">
+                                <span class="spec-icon">🔌</span>
+                                <span>220/380V</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-icon">🔊</span>
+                                <span>65-75 дБ</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-icon">📏</span>
+                                <span>2м</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-price">
+                        <div class="price-amount">от 30,000 ₸</div>
+                        <div class="price-period">в сутки</div>
+                        <div class="card-note">
+                            * Доставка и топливо рассчитывается отдельно
+                        </div>
+                    </div>
+                    <a href="https://wa.me/77076782151?text=Хочу арендовать Isuzu 55 kVA" class="btn btn-card">
+                        ⚡ Арендовать сейчас ⚡
+                    </a>
+                </div>
+            </div>
+
+            <div class="delivery-info">
+                <div class="info-card">
+                    <span class="info-icon">🚚</span>
+                    <div class="info-content">
+                        <h4>Доставка</h4>
+                        <p>От 50,000 ₸</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-bolt">⚡</span>
+                Как мы работаем
+            </h2>
+
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">
+                        <span>1</span>
+                        <div class="step-spark"></div>
+                    </div>
+                    <div class="step-content">
+                        <h3>Заявка</h3>
+                        <p>Свяжитесь с нами через WhatsApp или по телефону</p>
+                    </div>
+                </div>
+
+                <div class="step-connector">
+                    <div class="connector-line"></div>
+                    <div class="connector-bolt">⚡</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">
+                        <span>2</span>
+                        <div class="step-spark"></div>
+                    </div>
+                    <div class="step-content">
+                        <h3>Доставка и установка</h3>
+                        <p>Привезем и установим генератор. Договор подписывается после доставки</p>
+                    </div>
+                </div>
+
+                <div class="step-connector">
+                    <div class="connector-line"></div>
+                    <div class="connector-bolt">⚡</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">
+                        <span>3</span>
+                        <div class="step-spark"></div>
+                    </div>
+                    <div class="step-content">
+                        <h3>Обслуживание</h3>
+                        <p>Обеспечиваем техническую поддержку на весь период аренды</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-bolt">⚡</span>
+                Связаться с нами
+            </h2>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">💬</div>
+                    <h3>WhatsApp</h3>
+                    <a href="https://wa.me/77076782151" class="contact-link">Написать</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Телефон</h3>
+                    <a href="tel:+77076782151" class="contact-link">+7 707 678 21 51</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Город</h3>
+                    <p class="contact-text">Алматы</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Power<span class="logo-accent">Go</span></span>
+                </div>
+                <p class="footer-text">Надежное энергообеспечение вашего бизнеса</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
