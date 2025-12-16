@@ -83,9 +83,15 @@ body.light-theme .nav a {
     align-items: center;
     position: fixed;
     top: 0;
-    left: 20px;
+    left: calc(50% - 600px + 20px);
     z-index: 99;
     transition: opacity 0.3s ease;
+}
+
+@media (max-width: 1240px) {
+    .logo {
+        left: 20px;
+    }
 }
 
 body.scrolled .logo {
