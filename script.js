@@ -142,10 +142,11 @@ class ElectricBackground {
 
 // ===== Theme Switcher =====
 class ThemeSwitcher {
-    constructor() {
+    constructor(headerScroll) {
         this.switch = document.getElementById('themeSwitch');
         this.body = document.body;
         this.isDark = true;
+        this.headerScroll = headerScroll;
 
         // Load saved theme
         const savedTheme = localStorage.getItem('theme');
@@ -167,6 +168,11 @@ class ThemeSwitcher {
             this.body.classList.add('light-theme');
             this.switch.classList.add('active');
             localStorage.setItem('theme', 'light');
+        }
+
+        // Update header background immediately
+        if (this.headerScroll) {
+            this.headerScroll.onScroll();
         }
 
         // Trigger spark animation
@@ -333,12 +339,14 @@ class HeaderScroll {
     }
 
     onScroll() {
+        const isLightTheme = document.body.classList.contains('light-theme');
+
         if (window.pageYOffset > 100) {
             this.header.style.padding = '0.5rem 0';
-            this.header.style.background = 'rgba(10, 10, 10, 0.95)';
+            this.header.style.background = isLightTheme ? 'rgba(255, 255, 255, 0.95)' : 'rgba(10, 10, 10, 0.95)';
         } else {
             this.header.style.padding = '1rem 0';
-            this.header.style.background = 'rgba(10, 10, 10, 0.9)';
+            this.header.style.background = isLightTheme ? 'rgba(255, 255, 255, 0.9)' : 'rgba(10, 10, 10, 0.9)';
         }
     }
 }
@@ -350,8 +358,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const electric = new ElectricBackground(canvas);
     electric.animate();
 
-    // Theme switcher
-    new ThemeSwitcher();
+    // Header scroll effect (создаем первым)
+    const headerScroll = new HeaderScroll();
+
+    // Theme switcher (передаем headerScroll)
+    new ThemeSwitcher(headerScroll);
 
     // Scroll animations
     new ScrollAnimations();
@@ -367,9 +378,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Cursor glow
     new CursorGlow();
-
-    // Header scroll effect
-    new HeaderScroll();
 
     // Add loading animation
     document.body.style.opacity = '0';

@@ -61,8 +61,10 @@ body.light-theme {
     transition: var(--transition);
 }
 
-body.light-theme .header {
-    background: rgba(255, 255, 255, 0.9);
+body.light-theme .logo,
+body.light-theme .logo-text,
+body.light-theme .nav a {
+    color: #0a0a0a;
 }
 
 .header .container {
