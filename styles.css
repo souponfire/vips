@@ -660,6 +660,10 @@ body.light-theme .header {
     overflow: visible;
     border: 3px solid var(--primary-color);
     flex-shrink: 0;
+    text-shadow: -0.5px -0.5px 0 #000,
+                  0.5px -0.5px 0 #000,
+                 -0.5px  0.5px 0 #000,
+                  0.5px  0.5px 0 #000;
 }
 
 .btn-card::before {
