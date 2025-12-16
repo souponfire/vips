@@ -288,23 +288,6 @@ body.light-theme .header {
     overflow: hidden;
 }
 
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-.btn:hover::before {
-    width: 300px;
-    height: 300px;
-}
 
 .btn-primary {
     background: var(--primary-color);
@@ -451,7 +434,6 @@ body.light-theme .header {
     border: 2px solid rgba(252, 218, 0, 0.3);
     border-radius: 16px;
     padding: 2rem;
-    transition: var(--transition);
     overflow: hidden;
     min-height: 600px;
     display: flex;
@@ -468,7 +450,6 @@ body.light-theme .header {
     background-position: center;
     background-repeat: no-repeat;
     opacity: 1;
-    transition: var(--transition);
     z-index: 0;
 }
 
@@ -508,7 +489,6 @@ body.light-theme .header {
         transparent 70%
     );
     opacity: 0;
-    transition: opacity 0.3s ease;
 }
 
 
@@ -632,6 +612,15 @@ body.light-theme .header {
                   0.5px -0.5px 0 #000,
                  -0.5px  0.5px 0 #000,
                   0.5px  0.5px 0 #000;
+    transition: all 0.3s ease;
+}
+
+.btn-card:hover {
+    background: #ffed4e;
+    border-color: #ffed4e;
+    box-shadow: 0 0 30px rgba(252, 218, 0, 0.8),
+                0 0 50px rgba(252, 218, 0, 0.5),
+                0 0 70px rgba(252, 218, 0, 0.3);
 }
 
 

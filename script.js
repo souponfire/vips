@@ -360,7 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
     new SmoothScroll();
 
     // Generator card effects
-    new GeneratorCardEffects();
+    // new GeneratorCardEffects(); // ОТКЛЮЧЕНО - крутит карточки
 
     // Parallax effect
     new ParallaxEffect();
