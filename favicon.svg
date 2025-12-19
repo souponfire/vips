@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bulbGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffed4e"/>
+      <stop offset="100%" style="stop-color:#ffc00c"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Лампочка -->
+  <ellipse cx="32" cy="26" rx="18" ry="20" fill="url(#bulbGlow)" filter="url(#glow)"/>
+  <!-- Свечение внутри -->
+  <ellipse cx="32" cy="24" rx="10" ry="12" fill="#fff" opacity="0.6"/>
+  <!-- Цоколь -->
+  <rect x="24" y="44" width="16" height="4" rx="1" fill="#ffc00c"/>
+  <rect x="25" y="48" width="14" height="3" rx="1" fill="#e0a800"/>
+  <rect x="26" y="51" width="12" height="3" rx="1" fill="#c99700"/>
+  <!-- Контакт -->
+  <rect x="29" y="54" width="6" height="4" rx="2" fill="#888"/>
+</svg>
