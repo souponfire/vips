@@ -28,10 +28,10 @@ class ElectricBackground {
             });
         }
 
-        // Create periodic lightning (еще больше молний)
+        // Create periodic lightning (больше молний, дольше держатся)
         const isMobile = window.innerWidth < 768;
-        const lightningChance = isMobile ? 0.8 : 0.5;
-        const lightningInterval = isMobile ? 800 : 1500;
+        const lightningChance = isMobile ? 0.8 : 0.6;
+        const lightningInterval = isMobile ? 800 : 1200;
 
         // Создаем начальные молнии сразу при старте
         const initialLightnings = isMobile ? 4 : 3;
@@ -56,7 +56,7 @@ class ElectricBackground {
         this.lightnings.push({
             points: this.generateLightningPoints(startX, startY, endX, endY),
             opacity: 1,
-            decay: 0.05
+            decay: 0.03
         });
 
         // Случайно добавляем дополнительные молнии (двойные/тройные)
@@ -67,7 +67,7 @@ class ElectricBackground {
             this.lightnings.push({
                 points: this.generateLightningPoints(startX + offset, startY, endX + offset, endY),
                 opacity: 0.8,
-                decay: 0.05
+                decay: 0.03
             });
         }
 
@@ -76,7 +76,7 @@ class ElectricBackground {
             this.lightnings.push({
                 points: this.generateLightningPoints(startX + offset, startY, endX + offset, endY),
                 opacity: 0.6,
-                decay: 0.05
+                decay: 0.03
             });
         }
     }
