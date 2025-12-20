@@ -1,5 +1,13 @@
+# Разрешаем всем поисковым роботам
 User-agent: *
 Allow: /
 
-# Sitemap
+# Специально для Яндекса
+User-agent: Yandex
+Allow: /
+
+# Карта сайта
 Sitemap: https://powergo.kz/sitemap.xml
+
+# Хост (для Яндекса - указываем основное зеркало)
+Host: https://powergo.kz
